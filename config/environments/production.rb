@@ -20,6 +20,9 @@ Impressme::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # http://stackoverflow.com/questions/10792598/heroku-ruby-on-rails-error-image-not-precompiling
+  config.assets.initialize_on_precompile = false
+  
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
