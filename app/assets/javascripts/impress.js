@@ -12,8 +12,8 @@
 // (function ( document, window ) {
 
 
-	Aloha.ready(function() {
-		Aloha.require( ['aloha', 'jquery' ], function( Aloha, jQuery ) {
+  Aloha.ready(function() {
+    Aloha.require( ['aloha', 'jquery' ], function( Aloha, jQuery ) {
 
     // HELPER FUNCTIONS
     
@@ -261,18 +261,18 @@
     // EVENTS
     
     document.addEventListener("keydown", function ( event ) {
-		var content = false, // this is the cleaned content of the last active editable
-		contentId = false; // this HTML ID of the DOM element
-		
-		if ( Aloha.activeEditable ) {
-			content = Aloha.activeEditable.getContents(); // this is the cleaned content of the last active editable
-			contentId = Aloha.activeEditable.getId(); // this HTML ID of the DOM element
-		}
-		//console.log(contentId, content);
+    var content = false, // this is the cleaned content of the last active editable
+    contentId = false; // this HTML ID of the DOM element
+    
+    if ( Aloha.activeEditable ) {
+      content = Aloha.activeEditable.getContents(); // this is the cleaned content of the last active editable
+      contentId = Aloha.activeEditable.getId(); // this HTML ID of the DOM element
+    }
+    //console.log(contentId, content);
 
         if ( !contentId && (event.keyCode == 9 || ( event.keyCode >= 32 && event.keyCode <= 34 ) || (event.keyCode >= 37 && event.keyCode <= 40)) ) {
-			//alert('keycode nav deactivated');
-			
+      //alert('keycode nav deactivated');
+      
 
             var next = active;
             switch( event.keyCode ) {
@@ -338,5 +338,5 @@
 
 //})(document, window);
 
-	});
+  });
 });
