@@ -14,6 +14,24 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
+    <script>
+    Aloha = window.Aloha || {};
+
+    Aloha.settings = {
+      baseUrl: '<%= Rails.application.config.assets.prefix %>/aloha-editor/lib/',
+      logLevels: {'error': true, 'warn': true, 'info': false, 'debug': false},
+      errorhandling : true,
+      locale: 'en',
+      plugins: {
+        format: {
+          config: ['b', 'i', 'p', 'sub', 'sup', 'del', 'title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'removeFormat']
+        }
+      },
+      sidebar: {
+        disabled: true
+      }
+    };
+    </script>
     <%= javascript_include_tag "aloha", :"data-aloha-plugins" => "common/ui,common/format,common/table,common/list,common/link,common/highlighteditables,common/contenthandler,common/paste,common/commands" %>
     
     <!-- For third-generation iPad with high-resolution Retina display: -->
@@ -38,9 +56,9 @@
     
   </head>
   <body>
-    <!-- BEGIN:slide content -->
+    <!-- BEGIN:slideshow content -->
     <%= yield %>
-    <!-- ENDslide content -->
+    <!-- END:slideshow content -->
     
     <div class="hint">
       <p>Use a spacebar or arrow keys to navigate</p>
