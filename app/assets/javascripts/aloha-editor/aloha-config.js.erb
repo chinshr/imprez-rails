@@ -1,7 +1,11 @@
 Aloha = window.Aloha || {};
 
 Aloha.settings = {
-  baseUrl: '<%= Rails.env.production? ? "/assets" : Rails.application.config.assets.prefix %>/aloha-editor/lib/',
+<% if Rails.env.production? %>  
+  baseUrl: '/assets/aloha-editor/lib/',
+<% else %>
+  baseUrl: '<%= Rails.application.config.assets.prefix %>/aloha-editor/lib/',
+<% end %>
   logLevels: {'error': true, 'warn': true, 'info': false, 'debug': false},
   errorhandling : true,
   locale: 'en',
