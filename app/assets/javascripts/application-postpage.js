@@ -13,6 +13,8 @@
 //= require twitter/bootstrap
 //= require impress
 
+impress().init();
+
 $(function() {
 });
 
