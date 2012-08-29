@@ -10,12 +10,24 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require twitter/bootstrap
 //= require impress
-
-impress().init();
+//= require twitter/bootstrap
 
 $(function() {
+  impress().init();
+  
+  $("#nav-home-btn").click(function() {
+    impress().goto(0);
+  });
+
+  $("#nav-prev-btn").click(function() {
+    impress().prev();
+  });
+
+  $("#nav-next-btn").click(function() {
+    impress().next();
+  });
+  
 });
 
 Aloha.ready(function() {

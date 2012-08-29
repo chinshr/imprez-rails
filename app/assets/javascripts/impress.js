@@ -340,7 +340,7 @@
                 meta.name = 'viewport';
                 document.head.appendChild(meta);
             }
-            
+
             // initialize configuration object
             var rootData = root.dataset;
             config = {
@@ -362,7 +362,7 @@
             
             // set initial styles
             document.documentElement.style.height = "100%";
-            
+
             css(body, {
                 height: "100%",
                 overflow: "hidden"
@@ -382,14 +382,14 @@
                 transform: perspective( config.perspective/windowScale ) + scale( windowScale )
             });
             css(canvas, rootStyles);
-            
+
             body.classList.remove("impress-disabled");
             body.classList.add("impress-enabled");
-            
+
             // get and init steps
             steps = $$(".step", root);
             steps.forEach( initStep );
-            
+
             // set a default initial state of the canvas
             currentState = {
                 translate: { x: 0, y: 0, z: 0 },
