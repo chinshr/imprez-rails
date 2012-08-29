@@ -28,6 +28,39 @@ $(function() {
     impress().next();
   });
   
+  $("#nav-new-step").click(function() {
+    alert("New Step");
+    event.preventDefault();
+  });
+
+  $("#nav-new-slide").click(function() {
+    alert("New Slide");
+    event.preventDefault();
+  });
+
+  $("#nav-create-duplicate").click(function() {
+    alert("Duplicate current");
+    event.preventDefault();
+  });
+
+  $("#nav-remove-current").click(function(event) {
+    if(confirm("Do you really want to remove the current step?")) {
+      $(impress().currentStep()).remove();
+      impress().reset();
+    }
+    event.preventDefault();
+  });
+
+  $("#nav-edit-btn").click(function() {
+    var el = $(this);
+    if(/btn-primary/.test(el.attr('class'))) {
+      el.removeClass('btn-primary').addClass('btn-inverse');
+    } else {
+      el.addClass('btn-primary').removeClass('btn-inverse');
+    }
+    event.preventDefault();
+  });
+  
 });
 
 Aloha.ready(function() {

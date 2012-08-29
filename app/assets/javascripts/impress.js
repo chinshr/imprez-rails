@@ -259,6 +259,7 @@
         // root presentation elements
         var root = byId( rootId );
         var canvas = document.createElement("div");
+        canvas.setAttribute("id", "impress-canvas-" + rootId);
         
         var initialized = false;
         
@@ -328,9 +329,15 @@
             });
         };
         
+        var reset = function () {
+          var canvas = document.getElementById("impress-canvas-" + rootId)
+          canvas.parentNode.removeChild(canvas);
+          this.init(true);
+        };
+        
         // `init` API function that initializes (and runs) the presentation.
-        var init = function () {
-            if (initialized) { return; }
+        var init = function (force) {
+            if (!(typeof(force) === "boolean" && force === true) && initialized) { return; }
             
             // First we set up the viewport for mobile devices.
             // For some reason iPad goes nuts when it is not done properly.
@@ -564,6 +571,10 @@
             return goto(next);
         };
         
+        var currentStep = function () {
+          return activeStep;
+        }
+        
         // Adding some useful classes to step elements.
         //
         // All the steps that have not been shown yet are given `future` class.
@@ -633,9 +644,12 @@
         // store and return API for given impress.js root element
         return (roots[ "impress-root-" + rootId ] = {
             init: init,
+            reset: reset,
             goto: goto,
             next: next,
-            prev: prev
+            prev: prev,
+            getStep: getStep,
+            currentStep: currentStep
         });
 
     };
