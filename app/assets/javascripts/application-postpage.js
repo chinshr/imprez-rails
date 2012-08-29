@@ -52,11 +52,12 @@ $(function() {
   });
 
   $("#nav-edit-btn").click(function() {
-    var el = $(this);
-    if(/btn-primary/.test(el.attr('class'))) {
-      el.removeClass('btn-primary').addClass('btn-inverse');
+    if(/btn-primary/.test($(this).attr('class'))) {
+      $(this).removeClass('btn-primary').addClass('btn-inverse');
+      $(".step").attr('contenteditable', false);
     } else {
-      el.addClass('btn-primary').removeClass('btn-inverse');
+      $(this).addClass('btn-primary').removeClass('btn-inverse');
+      $(".step").attr('contenteditable', true);
     }
     event.preventDefault();
   });
