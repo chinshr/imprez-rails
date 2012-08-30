@@ -32,28 +32,31 @@ $(function() {
   
   $("#nav-home-btn").click(function() {
     impress().goto(0);
+    event.preventDefault();
   });
 
   $("#nav-prev-btn").click(function() {
     impress().prev();
+    event.preventDefault();
   });
 
   $("#nav-next-btn").click(function() {
     impress().next();
+    event.preventDefault();
   });
   
   $("#nav-new-step").click(function() {
-    alert("New Step");
+    alert($(this).attr("id"));
     event.preventDefault();
   });
 
   $("#nav-new-slide").click(function() {
-    alert("New Slide");
+    alert($(this).attr("id"));
     event.preventDefault();
   });
 
   $("#nav-create-duplicate").click(function() {
-    alert("Duplicate current");
+    alert($(this).attr("id"));
     event.preventDefault();
   });
 
@@ -80,6 +83,16 @@ $(function() {
     var text = $("#nav-search input").val();
     var found = $('.step *:containsRegexp("/' + text + '/gi")');
     impress().goto($(found.first()).closest(".step").attr("id"));
+    event.preventDefault();
+  });
+  
+  $("#nav-start-presentation").click(function() {
+    alert($(this).attr("id"));
+    event.preventDefault();
+  });
+  
+  $("#nav-download-presentation").click(function() {
+    alert($(this).attr("id"));
     event.preventDefault();
   });
   
