@@ -52,37 +52,54 @@
           <!-- Be sure to leave the brand out there if you want it shown -->
           <a class="brand" href="#">imprez.us</a>
 
+          <ul class="nav">
+            <!-- navigation -->
+            <li>
+              <div class="btn-group">
+                <button id="nav-home-btn" title="Home" class="btn btn-inverse btn-small"><i class="icon-home"></i></button>
+                <button id="nav-prev-btn" title="Previous Step" class="btn btn-inverse btn-small"><i class="icon-arrow-left"></i></button>
+                <button id="nav-next-btn" title="Next Step" class="btn btn-inverse btn-small"><i class="icon-arrow-right"></i></button>
+                <button id="nav-edit-btn" title="Edit" class="btn btn-primary btn-small"><i class="icon-edit"></i></button>
+                <button id="nav-remove-current" title="Remove current" class="btn btn-inverse btn-small"><i class="icon-trash"></i></button>
+              </div>
+            </li>
+          
+            <!-- insert -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Insert <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" id="nav-new-step"><i class="icon-plus"></i> Step</a></li>
+                <li><a href="#" id="nav-new-slide"><i class="icon-file"></i> Slide</a></li>
+                <li><a href="#" id="nav-create-duplicate"><i class="icon-asterisk"></i> Duplicate current</a></li>
+              </ul>
+            </li>
+
+            <!-- start -->
+            <li>
+              <div class="btn-group">
+                <button id="nav-start-btn" title="Start presentation" class="btn btn-success btn-small"><i class="icon-play"></i></button>
+              </div>
+            </li>
+          </ul>
+
           <!-- Everything you want hidden at 940px or less, place within here -->
           <div class="nav-collapse">
-            <ul class="nav">
-
-              <!-- navigation -->
-              <li>
-                <div class="btn-group">
-                  <button id="nav-home-btn" title="Home" class="btn btn-inverse"><i class="icon-home"></i></button>
-                  <button id="nav-prev-btn" title="Previous Step" class="btn btn-inverse"><i class="icon-arrow-left"></i></button>
-                  <button id="nav-next-btn" title="Next Step" class="btn btn-inverse"><i class="icon-arrow-right"></i></button>
-                  <button id="nav-edit-btn" title="Edit" class="btn btn-primary"><i class="icon-edit"></i></button>
-                  <button id="nav-remove-current" title="Remove current" class="btn btn-inverse"><i class="icon-trash"></i></button>
-                </div>
-              </li>
-              
-              <!-- insert -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Insert <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#" id="nav-new-step"><i class="icon-asterisk"></i> New step</a></li>
-                  <li><a href="#" id="nav-new-slide"><i class="icon-stop"></i> New slide</a></li>
-                  <li><a href="#" id="nav-create-duplicate"><i class="icon-plus"></i> Duplicate current</a></li>
-                </ul>
-              </li>
-            </ul>
-            
-            <!-- .nav, .navbar-search, .navbar-form, etc -->
-            <form class="navbar-search pull-right">
-              <input type="text" class="search-query span2" placeholder="Search">
+            <!-- search -->
+            <form id="nav-search" class="navbar-search pull-right form-search">
+              <div class="input-append">
+                <input type="text" class="search-query span2" placeholder="">
+                <button type="submit" class="btn btn-inverse"><i class="icon-search"></i></button>
+              </div>
             </form>
 
+            <ul class="nav pull-right">
+              <!-- download -->
+              <li>
+                <div class="btn-group">
+                  <button id="nav-download-btn" title="Download" class="btn btn-warning btn-small"><i class="icon-download"></i></button>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
