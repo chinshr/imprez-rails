@@ -86,6 +86,12 @@ $(function() {
     event.preventDefault();
   });
   
+  $('#nav-search').typeahead({
+    source: function (query, process) {
+      return process(["a"]);
+    }
+  });
+  
   $("#nav-start-presentation").click(function() {
     alert($(this).attr("id"));
     event.preventDefault();
@@ -111,7 +117,7 @@ $(function() {
     $(".highlight").each(function(i, v) {$(v).replaceWith($(v).text())});
 
     // make sure there are a couple letters
-    if(phrase.length < 1) {
+    if(phrase.length < 2) {
       return;
     }
 

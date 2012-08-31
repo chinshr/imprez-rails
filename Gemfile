@@ -19,14 +19,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-
 group :production do
   gem "therubyracer"
   gem "thin"
 end
-
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :test do
   gem 'mocha'
@@ -36,4 +32,6 @@ group :test do
   gem 'minitest'
 end
 
+gem 'jquery-rails'
+gem 'less-rails', '~> 2.2.3'
 gem "heroku"
