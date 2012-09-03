@@ -15,19 +15,19 @@
 
 
 /* jQuery selector to match exact text inside an element
-*  :containsExact()     - case insensitive
-*  :containsExactCase() - case sensitive
-*  :containsRegex()     - set by user ( use: $(el).find(':containsRegex(/(red|blue|yellow)/gi)') )
+*  :containsRegexp()     - set by user ( use: $(el).find(':containsRegex(/(red|blue|yellow)/gi)') )
 */
-$.extend($.expr[':'],{
-  containsRegexp: function(a,i,m){
-    var regreg =  /^\/((?:\\\/|[^\/])+)\/([mig]{0,3})$/,
+
+$.extend($.expr[':'], {
+  containsRegexp: function(a, i, m) {
+    var regreg =  /^\/((?:\\\/|[^\/])+)\/([mig]{0,3})$/;
     reg = regreg.exec(m[3]);
     return reg ? RegExp(reg[1], reg[2]).test($.trim(a.innerHTML)) : false;
   }
 });
 
 $(function() {
+  
   impress().init();
   
   $("#nav-home-btn").click(function() {
@@ -86,9 +86,11 @@ $(function() {
     event.preventDefault();
   });
   
-  $('#nav-search').typeahead({
+  $('#global-search').typeahead({
     source: function (query, process) {
-      return process(["a"]);
+      // $('.step *:containsRegexp("/' + query + '/gi")');
+      // var found = $('.step *:contains("' + query + '")');
+      return false;
     }
   });
   
@@ -104,7 +106,7 @@ $(function() {
   
   // BEGIN:search
   var that = this;
-  that.input = $("#nav-search input");
+  that.input = $("#global-search");
 
   // handles searching the document
   that.performSearch = function() {
@@ -155,8 +157,10 @@ $(function() {
   });
   // END:search
   
-Aloha.ready(function() {
-  $ = Aloha.jQuery;
-  $('.step').aloha();
-});
-
+  Aloha.ready(function () {
+    Aloha.require(['aloha', 'aloha/jquery', 'aloha/floatingmenu'], function (Aloha, $, FloatingMenu) {
+      $('.step').aloha();
+      $('.editable').aloha();
+      $('.default-block').alohaBlock();
+    });
+  });

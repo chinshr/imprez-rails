@@ -14,7 +14,7 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application-prepage", :"data-aloha-plugins" => "common/ui,common/format,common/table,common/list,common/link,common/highlighteditables,common/contenthandler,common/paste,common/commands" %>
+    <%= javascript_include_tag "application-prepage", :"data-aloha-plugins" => "common/ui,common/format,common/paste,common/block,common/table,common/list,common/link,common/highlighteditables,common/contenthandler,common/commands" %>
     
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
@@ -87,7 +87,7 @@
 
             <!-- search -->
             <form id="nav-search" class="navbar-search form-search has-saved-searches pull-right ">
-              <input type="text" class="search-query span2" placeholder="" autocomplete="off" spellcheck="false" data-provide="typeahead">
+              <input id="global-search" type="text" class="search-query span2" placeholder="" autocomplete="off" spellcheck="false" data-provide="typeahead" data-items="4">
             </form>
 
             <ul class="nav pull-right">
