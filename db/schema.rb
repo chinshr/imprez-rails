@@ -16,12 +16,13 @@ ActiveRecord::Schema.define(:version => 20120903225610) do
   create_table "presentations", :force => true do |t|
     t.string   "name"
     t.text     "body"
-    t.boolean  "template"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "template",   :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "code"
   end
 
   add_index "presentations", ["code"], :name => "index_presentations_on_code", :unique => true
+  add_index "presentations", ["template"], :name => "index_presentations_on_template"
 
 end
