@@ -25,13 +25,14 @@ group :production do
 end
 
 group :test do
-  gem 'mocha'
+  gem 'minitest'
   gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
-  gem 'minitest'
+  gem 'mocha'
 end
 
 gem 'jquery-rails'
 gem 'less-rails', '~> 2.2.3'
 gem "heroku"
+gem "friendly_id"#, "~> 4.0.0"

@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  content: MyText
+simple:
+  code: "818kt"
+  name: Simple
+  body: '<div id="overview" class="step"></div>'
   template: false
 
-two:
-  content: MyText
-  template: false
+simple_template:
+  code: "zx8xy"
+  name: Simple Template
+  body: '<div id="overview" class="step"></div>'
+  template: true
