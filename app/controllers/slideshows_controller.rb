@@ -1,2 +1,0 @@
-class SlideshowsController < ApplicationController
-end
