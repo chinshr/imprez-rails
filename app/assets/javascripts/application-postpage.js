@@ -98,6 +98,11 @@ $(function() {
     alert($(this).attr("id"));
     event.preventDefault();
   });
+
+  $("#nav-upload-presentation").click(function() {
+    alert($(this).attr("id"));
+    event.preventDefault();
+  });
   
   $("#nav-download-presentation").click(function() {
     alert($(this).attr("id"));
