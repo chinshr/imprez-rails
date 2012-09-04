@@ -35,4 +35,6 @@ end
 gem 'jquery-rails'
 gem 'less-rails', '~> 2.2.3'
 gem "heroku"
-gem "friendly_id"#, "~> 4.0.0"
+gem "friendly_id"
+gem 'nokogiri', '1.5.0'
+
