@@ -29,18 +29,72 @@ class Presentation
         @contents = send "load_#{format}", @options[format]
       end
     end
-
     alias to_s contents
+
+    # Return all stylesheet references, local only if true is passed.
+    def stylesheets(local = false)
+      send "#{local ? "local_" : ""}asset_references", "head link", "href", "rel", "stylesheet"
+    end
+
+    # Return all script references, local only if true is passed.
+    def scripts(local = false)
+      send "#{local ? "local_" : ""}asset_references", "script", "src"
+    end
+
+    def inline(selector = "style")
+      inline_collector(selector)
+    end
+
+    def file_location(path)
+      File.join(root, path)
+    end
+    
+    def get_file_contents(path)
+      File.read(file_location(path))
+    end
+    
+    def uri?(string)
+      !!string.match(/^(http:|https:)/)
+    end
+
+    def html?
+      :html == @options.keys.detect {|key| @@admissible_formats.include?(key)}
+    end
 
     private
 
-    def get_file_contents(path)
-      File.read(File.join(root, path))
+    def local_asset_references(tag, target, rel = nil, comp = nil)
+      assets(tag, target, rel, comp).select {|ref| !uri?(ref) && File.exist?(file_location(ref))}
+    end
+
+    def asset_references(tag, target, rel = nil, comp = nil)
+      result = []
+      if html?
+        dom = dom(@options[:html])
+        references = dom.css(tag).select {|el| el.attr(target)}
+        references.each do |el|
+          if rel && comp 
+            result.push(el.attr(target)) if el.attr(rel) == comp
+          else
+            result.push(el.attr(target))
+          end
+        end
+      end
+      result
+    end
+    
+    def inline_collector(selector)
+      dom(@options[:html]).css(selector).map(&:inner_html).reject(&:empty?) if html?
+    end
+
+    def dom(path)
+      @dom or begin
+        @dom = Nokogiri::HTML get_file_contents(path)
+      end
     end
 
     def load_html(path)
-      html = Nokogiri::HTML get_file_contents(path)
-      html.at_css("#impress").tap do |impress|
+      dom(path).at_css("#impress").tap do |impress|
         ['img', 'input[type=image]'].each do |selector|
           impress.css(selector).each do |elem|
             elem["src"] = [image_path, File.basename(URI.parse(elem["src"]).path)].join("/")
